@@ -3,6 +3,7 @@ return {
     "Vigemus/iron.nvim",
     config = function()
       local iron = require("iron.core")
+      local view = require("iron.view")
 
       iron.setup({
         config = {
@@ -13,16 +14,16 @@ return {
             },
           },
           --repl_open_cmd = "vsplit", -- open REPL in vertical split
-          repl_open_cmd = require("iron.view").split.vertical.botright(0.4),
+          repl_open_cmd = view.split.rightbelow("%25"),
         },
         keymaps = {
           --send_motion = "<leader>sc", -- send selected code
           --visual_send = "<leader>sc", -- send in visual mode
           --send_line = "<leader>sl", -- send current line
           --send_file = "<leader>sf", -- send whole file
-          --cr = "<leader>s<cr>", -- send and go to REPL
-          --clear = "<leader>cl",
-          --exit = "<leader>sq",
+          cr = "<leader>s<cr>", -- send and go to REPL
+          clear = "<leader>cl",
+          exit = "<leader>sq",
           --interrupt = "<leader>si",
         },
         highlight = { italic = true },

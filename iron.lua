@@ -10,10 +10,11 @@ return {
           -- tell iron how to start utop for OCaml
           repl_definition = {
             ocaml = {
-              command = { "utop" },
+              command = {
+                os.getenv("OPAM_SWITCH_PREFIX") .. "/bin/utop",
+              },
             },
           },
-          --repl_open_cmd = "vsplit", -- open REPL in vertical split
           repl_open_cmd = view.split.rightbelow("%25"),
         },
         keymaps = {
@@ -21,10 +22,10 @@ return {
           --visual_send = "<leader>sc", -- send in visual mode
           --send_line = "<leader>sl", -- send current line
           --send_file = "<leader>sf", -- send whole file
+          --interrupt = "<leader>si",
           cr = "<leader>s<cr>", -- send and go to REPL
           clear = "<leader>cl",
           exit = "<leader>sq",
-          --interrupt = "<leader>si",
         },
         highlight = { italic = true },
         ignore_blank_lines = true,
